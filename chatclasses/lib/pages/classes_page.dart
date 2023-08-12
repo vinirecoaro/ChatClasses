@@ -1,3 +1,4 @@
+import 'package:chatclasses/pages/class_page.dart';
 import 'package:chatclasses/widgets/card_label.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -53,8 +54,16 @@ class _ClassesPageState extends State<ClassesPage> {
                 var _class = classes[index];
                 return Dismissible(
                     onDismissed: (DismissDirection dismissDirection) async {},
-                    key: Key("1"),
-                    child: CardLabel(classTitle: _class));
+                    key: const Key("1"),
+                    child: InkWell(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (_) => ClassPage(classTitle: _class)));
+                      },
+                      child: CardLabel(classTitle: _class),
+                    ));
               },
             ),
           )
