@@ -52,18 +52,18 @@ class _ClassesPageState extends State<ClassesPage> {
               itemCount: classes.length,
               itemBuilder: (_, int index) {
                 var _class = classes[index];
-                return Dismissible(
-                    onDismissed: (DismissDirection dismissDirection) async {},
-                    key: const Key("1"),
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (_) => ClassPage(classTitle: _class)));
-                      },
-                      child: CardLabel(classTitle: _class),
-                    ));
+                return InkWell(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (_) => ClassPage(
+                                  classTitle: _class,
+                                  nickname: widget.nickname,
+                                )));
+                  },
+                  child: CardLabel(classTitle: _class),
+                );
               },
             ),
           )
@@ -90,10 +90,12 @@ class _ClassesPageState extends State<ClassesPage> {
                                 final Map<String, dynamic> newClass =
                                     <String, dynamic>{};
                                 newClass["users"] = userId;
+                                newClass["messages"] = "";
                                 db
                                     .collection("chats")
                                     .doc(newClassController.text)
                                     .set(newClass);
+                                classes = [];
                                 loadClasses();
                                 Navigator.pop(context);
                               },
