@@ -15,16 +15,19 @@ class _CardLabelState extends State<CardLabel> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 90,
+      height: 70,
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         child: Row(
           children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Text(widget.classTitle),
-              ],
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 16),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(widget.classTitle),
+                ],
+              ),
             ),
           ],
         ),

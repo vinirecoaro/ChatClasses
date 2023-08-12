@@ -1,5 +1,4 @@
 import 'package:chatclasses/pages/classes_page.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:uuid/uuid.dart';
@@ -13,7 +12,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var nicknameController = TextEditingController();
-  final db = FirebaseFirestore.instance;
 
   @override
   void initState() {
